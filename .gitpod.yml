@@ -1,0 +1,17 @@
+image:
+  file: .config/.gitpod.Dockerfile
+tasks:
+  - command: /usr/lib/postgresql/11/bin/pg_ctl start && cp .config/.apache2/apache2.conf /etc/apache2 && apachectl start && clear
+ports:
+  - port: 8080
+    onOpen: open-browser
+    visibility: private
+  - port: 5432
+    onOpen: ignore
+    visibility: private
+  - port: 5900
+    onOpen: ignore
+    visibility: private
+  - port: 6080
+    onOpen: open-browser
+    visibility: private
