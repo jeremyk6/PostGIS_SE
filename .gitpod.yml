@@ -1,3 +1,11 @@
+github:
+  prebuilds:
+    master: true
+    pullRequests: false
+    pullRequestsFromForks: false
+    addComment: false
+    addBadge: true
+    addLabel: prebuilt-in-gitpod
 image:
   file: .config/.gitpod.Dockerfile
 tasks:
