@@ -2,7 +2,8 @@ FROM debian:buster
 
 ENV PGADMIN_SETUP_EMAIL="geonum@geonum"
 ENV PGADMIN_SETUP_PASSWORD="geonum"
-ENV PGDATA="/home/gitpod/databases/pgsql_data"
+ENV HOME="/home/gitpod"
+ENV PGDATA="$HOME/databases/pgsql_data"
 ENV WINDOW_MANAGER="icewm"
 
 # Installation des paquets
@@ -36,6 +37,10 @@ RUN chmod +x /usr/bin/start-vnc-session.sh
 # server is running on screen 0, and if not starts Xvfb, x11vnc and novnc.
 RUN echo "export DISPLAY=:0" >> /home/gitpod/.bashrc
 RUN echo "[ ! -e /tmp/.X0-lock ] && (/usr/bin/start-vnc-session.sh &> /tmp/display-\${DISPLAY}.log)" >> /home/gitpod/.bashrc
+
+# Configuration de IceWM
+COPY .config/.icewm $HOME/.icewm
+RUN chown -R gitpod:gitpod $HOME/.icewm
 
 # Configuration de Postgre pour la connexion distante
 RUN echo "listen_addresses = '*'" >> /etc/postgresql/11/main/postgresql.conf &&\

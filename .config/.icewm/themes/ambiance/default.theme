@@ -1,0 +1,292 @@
+ThemeName="Ubuntu-Ambiance"
+ThemeDescription="Ambiance theme"
+ThemeAuthor="Gabriel B."
+Look=metal
+
+
+###############################################################################
+#                                WINDOWS                                      #
+###############################################################################
+
+# *********************************************************
+#   Title Bar
+# *********************************************************
+TitleBarHeight=22
+RoundCorners=1
+
+TitleBarJoinLeft=0 # 0/1        #  Join title*S.xpm and title*T.xpm
+TitleBarJoinRight=0 # 0/1       #  Join title*T.xpm and title*B.xpm
+
+ColorNormalTitleBar="rgb:42/41/3d"
+ColorActiveTitleBar="rgb:42/41/3d"
+
+
+# *********************************************************
+#   Title Bar Buttons
+# *********************************************************
+# (x) close,  (m) maximize & restore,  (i) minimize,  (s) menubutton, (h) hide,  (r) rollup & rolldown,  (d) depth
+TitleButtonsSupported="xmis"
+TitleButtonsLeft="s"
+TitleButtonsRight="xmi"
+
+RolloverButtonsSupported=1
+ShowMenuButtonIcon=0
+
+ColorNormalTitleButton="rgb:fc/fa/f8"
+ColorNormalTitleButtonText="rgb:80/80/80"
+
+
+# *********************************************************
+#   Title
+# *********************************************************
+TitleBarCentered=0 # 0/1         #  obsoleted by TitleBarJustify
+TitleBarJustify=0 # [0-100]     #  Justification of the window title
+
+TitleBarHorzOffset=10 # [-128-128]
+TitleBarVertOffset=0 # [-128-128]
+
+ColorNormalTitleBarText="rgb:99/95/8b"
+ColorNormalTitleBarShadow="rgb:33/33/33"
+
+ColorActiveTitleBarText="rgb:df/d8/c8"
+ColorActiveTitleBarShadow="rgb:33/33/33"
+
+
+# *********************************************************
+#   Borders
+# *********************************************************
+BorderSizeX=1
+BorderSizeY=5
+CornerSizeX=5
+CornerSizeY=27
+
+ColorInactiveBorder="rgb:87/7a/62"  # Same as Normal ?
+ColorNormalBorder="rgb:87/7a/62"
+ColorActiveBorder="rgb:87/7a/62"
+
+
+# *********************************************************
+#   Dialog Windows  &  Move/Resize status Window
+# *********************************************************
+DlgBorderSizeX=1
+DlgBorderSizeY=5
+
+ColorDialog="rgb:f0/eb/e2"   #  Background of dialog windows
+
+ColorMoveSizeStatus="rgb:f0/eb/e2"
+ColorMoveSizeStatusText="rgb:00/00/00"
+
+
+# *********************************************************
+#   Quick Switch
+# *********************************************************
+QuickSwitchHorzMargin=3 # [0-64]
+QuickSwitchVertMargin=3 # [0-64]
+
+QuickSwitchIconMargin=4 # [0-64]     #  Vertical margin in the quickswitch window
+
+QuickSwitchIconBorder=2 # [0-64]     #  Distance between the active icon and it's border
+ColorQuickSwitchActive="rgb:c6/b9/6a" #  Rectangle arround the active icon in the quick switch window
+
+QuickSwitchSeparatorSize=6 # [0-64]  #  Height of the separator between (all reachable) icons and text, 0 to avoid it
+
+ColorQuickSwitch="rgb:f0/eb/e2"
+ColorQuickSwitchText="rgb:00/00/00"
+
+
+
+
+
+
+###############################################################################
+#                                 WIDGETS                                     #
+###############################################################################
+
+# *********************************************************
+#   Buttons
+# *********************************************************
+ColorNormalButton="rgb:55/53/4b"
+ColorNormalButtonText="rgb:ff/ff/ff"
+
+ColorActiveButton="rgb:55/53/4b"
+ColorActiveButtonText="rgb:ff/ff/ff"
+
+
+# *********************************************************
+#   Scrollbars
+# *********************************************************
+ScrollBarX=16 # [0-64]     #  Scrollbar width
+ScrollBarY=16 # [0-64]     #  Scrollbar (button) height
+
+ColorScrollBar="rgb:f0/eb/e2"              # Scrollbar background (sliding area)
+ColorScrollBarSlider="rgb:e4/dd/cf"        # Background of the slider button in scrollbars
+ColorScrollBarArrow="rgb:f0/eb/e2"         # idem as below (obsolete)
+ColorScrollBarButton="rgb:f0/eb/e2"        # Background of the arrow buttons in scrollbars
+ColorScrollBarButtonArrow="rgb:c3/b6/9f"   # Color of active arrows on scrollbar buttons
+ColorScrollBarInactiveArrow="rgb:60/5e/59" # Color of inactive arrows on scrollbar buttons
+
+
+# *********************************************************
+#   Listboxes
+# *********************************************************
+ColorListBox="rgb:f0/eb/e2"
+ColorListBoxText="rgb:df/d8/c8"
+
+ColorListBoxSelection="rgb:b4/a5/90"
+ColorListBoxSelectionText="rgb:33/33/30"
+
+
+# *********************************************************
+#   Tooltips
+# *********************************************************
+ColorToolTip="rgb:00/00/00" # "rgb:72/67/59"
+ColorToolTipText="rgb:ff/ff/ff"
+
+
+# *********************************************************
+#   Labels
+# *********************************************************
+ColorLabel="rgb:c0/c0/c0"   # leave empty to force transparency
+ColorLabelText="rgb:00/00/00"
+
+
+# *********************************************************
+#   Text entries
+# *********************************************************
+ColorInput="rgb:ff/ff/ff"
+ColorInputText="rgb:3a/3a/3a"
+
+ColorInputSelection="rgb:c6/b9/a6"
+ColorInputSelectionText="rgb:3a/3a/3a"
+
+
+
+
+
+
+###############################################################################
+#                                TASKBAR                                      #
+###############################################################################
+
+# *********************************************************
+#   Taskbar  &  Taskbar buttons
+# *********************************************************
+TrayDrawBevel=0 # 0/1
+TaskBarAtTop=0 # 0/1
+ColorDefaultTaskBar="rgb:53/52/4d"
+
+ColorNormalTaskBarApp="rgb:55/53/4b"
+ColorNormalTaskBarAppText="rgb:df/d8/c8"
+
+ColorActiveTaskBarApp="rgb:55/53/4b"
+ColorActiveTaskBarAppText="rgb:ff/ff/ff"
+
+ColorMinimizedTaskBarApp="rgb:55/53/4b"
+ColorMinimizedTaskBarAppText="rgb:df/d8/c8"
+
+# Invisible = on other workspaces
+ColorInvisibleTaskBarApp="rgb:55/53/4b"
+ColorInvisibleTaskBarAppText="rgb:df/d8/c8"
+
+
+# *********************************************************
+#   Toolbar and Workspace Buttons
+# *********************************************************
+ColorToolButton="rgb:55/53/4b"       #  ColorNormalButton is used if empty
+ColorToolButtonText="rgb:df/d8/c8"   #  ColorNormalButtonText is used if empty
+
+ColorNormalWorkspaceButton="rgb:55/53/4b"      #  ColorNormalButton is used if empty
+ColorNormalWorkspaceButtonText="rgb:df/d8/c8"  #  ColorNormalButtonText is used if empty
+
+ColorActiveWorkspaceButton="rgb:55/53/4b"      #  ColorActiveButton is used if empty
+ColorActiveWorkspaceButtonText="rgb:ff/ff/ff"  #  ColorActiveButtonText is used if empty
+
+
+# *********************************************************
+#   Icons
+# *********************************************************
+MenuIconSize=16 # [8-128]
+
+SmallIconSize=16 # [8-128]
+LargeIconSize=32 # [8-128]
+HugeIconSize=48 # [8-128]
+
+
+# *********************************************************
+#   Mini icons
+# *********************************************************
+ColorNormalMinimizedWindow="rgb:55/53/4b"
+ColorNormalMinimizedWindowText="rgb:df/d8/c8"
+
+ColorActiveMinimizedWindow="rgb:55/53/4b"
+ColorActiveMinimizedWindowText="rgb:ff/ff/ff"
+
+
+# *********************************************************
+#   Menu
+# *********************************************************
+MenuMouseTracking=1 
+
+ColorNormalMenu="rgb:3c/3b/37"
+ColorNormalMenuItemText="rgb:df/d8/c8"
+
+ColorActiveMenuItem="rgb:33/33/30"   # leave empty to force transparency
+ColorActiveMenuItemText="rgb:ff/ff/ff"
+
+ColorDisabledMenuItemText="rgb:99/95/8b"
+#ColorDisabledMenuItemShadow=""
+
+
+# *********************************************************
+#   Clock (non-LCD Clock)
+# *********************************************************
+#  Task bar clock/APM uses nice pixmapped LCD display (but then it doesn't display correctly in many languages anymore, e.g. for Japanese and Korean it works only when a real font is used and not the LEDs
+TaskBarClockLeds=0 # 0/1
+ColorClock=""                  # leave empty to force transparency
+ColorClockText="rgb:df/d8/c8"
+
+
+# *********************************************************
+#   APM / CPU / Network
+# *********************************************************
+ColorApm=""                  # leave empty to force transparency
+ColorApmText="rgb:00/00/00"
+
+ColorCPUStatusUser="rgb:73/d2/16"
+ColorCPUStatusSystem="rgb:cc/00/00"
+ColorCPUStatusInterrupts="rgb:ed/d4/00"
+ColorCPUStatusIoWait="rgb:75/50/7b"
+ColorCPUStatusSoftIrq="rgb:00/cc/cc"
+ColorCPUStatusNice="rgb:34/65/a4"
+ColorCPUStatusIdle="rgb:00/00/00"    #  Idle (non) load on the CPU monitor, leave empty to force transparency
+
+ColorNetSend="rgb:ed/d4/00"
+ColorNetReceive="rgb:73/d2/16"
+ColorNetIdle="rgb:00/00/00"         #  Idle (non) load on the network monitor, leave empty to force transparency
+
+
+
+
+
+
+###############################################################################
+#                                 FONTS                                       #
+###############################################################################
+
+TitleFontNameXft		=	sans-serif:size=10:bold
+MenuFontNameXft			=	sans-serif:size=10
+MinimizedWindowFontNameXft	=	sans-serif:size=10
+ActiveButtonFontNameXft		=	sans-serif:size=10
+NormalButtonFontNameXft		=	sans-serif:size=10
+ToolButtonFontNameXft		=	sans-serif:size=10
+NormalWorkspaceFontNameXft	=	sans-serif:size=10
+ActiveWorkspaceFontNameXft	=	sans-serif:size=10
+QuickSwitchFontNameXft		=	sans-serif:size=10
+ListBoxFontNameXft		=	sans-serif:size=10
+StatusFontNameXft		=	sans-serif:size=10
+ToolTipFontNameXft		=	sans-serif:size=10
+ActiveTaskBarFontNameXft	=	sans-serif:size=10
+NormalTaskBarFontNameXft	=	sans-serif:size=10
+ClockFontNameXft		=	sans-serif:size=10
+InputFontNameXft		=	sans-serif:size=10
+
