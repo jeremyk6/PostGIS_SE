@@ -4,7 +4,7 @@
 
 DISP=${DISPLAY:1}
 
-Xvfb -screen $DISP 1920x1080x16 -ac -pn -noreset &
+Xvfb -screen $DISP 1280x720x16 -ac -pn -noreset &
 
 $WINDOW_MANAGER &
 
