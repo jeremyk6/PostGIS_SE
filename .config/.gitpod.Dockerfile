@@ -67,3 +67,6 @@ psql -h localhost postgres -c "ALTER USER gitpod WITH SUPERUSER CREATEDB CREATER
 psql -h localhost postgres -c "ALTER USER gitpod WITH PASSWORD 'geonum'" &&\
 psql -h localhost postgres -c "CREATE DATABASE gitpod;" &&\
 /usr/lib/postgresql/11/bin/pg_ctl stop
+
+USER root
+RUN cp -R /workspace /workspace.old && chown -R gitpod:gitpod /workspace.old
