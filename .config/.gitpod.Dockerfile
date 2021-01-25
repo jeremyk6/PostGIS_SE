@@ -2,7 +2,7 @@ FROM debian:buster
 
 ENV PGADMIN_SETUP_EMAIL="geonum@geonum"
 ENV PGADMIN_SETUP_PASSWORD="geonum"
-ENV HOME="/home/gitpod"
+ENV HOME="/workspace/home"
 ENV PGDATA="$HOME/databases/pgsql_data"
 ENV WINDOW_MANAGER="icewm"
 
@@ -17,7 +17,8 @@ apt install -y postgresql-11-pgrouting osm2pgrouting pgadmin4-web
 # VNC & QGIS zone
 #
 
-RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod
+RUN mkdir /workspace &&\
+useradd -l -u 33333 -G sudo -md $HOME -s /bin/bash -p gitpod gitpod
 
 RUN sudo apt-get update && \
     sudo apt-get install -yq xvfb x11vnc xterm openjfx libopenjfx-java icewm qgis git && \
@@ -35,8 +36,8 @@ RUN chmod +x /usr/bin/start-vnc-session.sh
 # This is a bit of a hack. At the moment we have no means of starting background
 # tasks from a Dockerfile. This workaround checks, on each bashrc eval, if the X
 # server is running on screen 0, and if not starts Xvfb, x11vnc and novnc.
-RUN echo "export DISPLAY=:0" >> /home/gitpod/.bashrc
-RUN echo "[ ! -e /tmp/.X0-lock ] && (/usr/bin/start-vnc-session.sh &> /tmp/display-\${DISPLAY}.log)" >> /home/gitpod/.bashrc
+RUN echo "export DISPLAY=:0" >> $HOME/.bashrc
+RUN echo "[ ! -e /tmp/.X0-lock ] && (/usr/bin/start-vnc-session.sh &> /tmp/display-\${DISPLAY}.log)" >> $HOME/.bashrc
 
 # Configuration de IceWM
 COPY .config/.icewm $HOME/.icewm
