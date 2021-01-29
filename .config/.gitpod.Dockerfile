@@ -6,23 +6,24 @@ ENV HOME="/workspace/home"
 ENV PGDATA="$HOME/databases/pgsql_data"
 ENV WINDOW_MANAGER="icewm"
 
-# Installation des paquets
-RUN apt update && apt upgrade -y &&\
-apt install -y --no-install-recommends curl ca-certificates gnupg ruby sudo &&\
-curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | apt-key add &&\
-sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/buster pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update' &&\
-apt install -y postgresql-11-pgrouting osm2pgrouting pgadmin4-web
-
-#
-# VNC & QGIS zone
-#
-
+# Création de l'utilisateur Gitpod
 RUN mkdir /workspace &&\
 useradd -l -u 33333 -G sudo -md $HOME -s /bin/bash -p gitpod gitpod
 
-RUN sudo apt-get update && \
-    sudo apt-get install -yq xvfb x11vnc xterm openjfx libopenjfx-java icewm qgis git && \
-    sudo rm -rf /var/lib/apt/lists/*
+# Installation des paquets
+RUN apt update && apt upgrade -y &&\
+apt install -y --no-install-recommends curl wget ca-certificates gnupg software-properties-common ruby sudo &&\
+curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | apt-key add &&\
+sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/buster pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list' &&\
+wget -qO - https://qgis.org/downloads/qgis-2020.gpg.key | sudo gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/qgis-archive.gpg --import &&\
+chmod a+r /etc/apt/trusted.gpg.d/qgis-archive.gpg &&\
+add-apt-repository "deb https://qgis.org/debian `lsb_release -c -s` main" &&\
+apt update && apt install -yq xvfb x11vnc xterm openjfx libopenjfx-java icewm qgis git postgresql-11-pgrouting osm2pgrouting pgadmin4-web && \
+sudo rm -rf /var/lib/apt/lists/*
+
+#
+# VNC zone
+#
 
 # Install novnc
 RUN git clone https://github.com/novnc/noVNC.git /opt/novnc \
@@ -42,6 +43,10 @@ RUN echo "[ ! -e /tmp/.X0-lock ] && (/usr/bin/start-vnc-session.sh &> /tmp/displ
 # Configuration de IceWM
 COPY .config/.icewm $HOME/.icewm
 RUN chown -R gitpod:gitpod $HOME/.icewm
+
+#
+# PostgreSQL/pgAdmin zone
+#
 
 # Configuration de Postgre pour la connexion distante
 RUN echo "listen_addresses = '*'" >> /etc/postgresql/11/main/postgresql.conf &&\
@@ -68,5 +73,7 @@ psql -h localhost postgres -c "ALTER USER gitpod WITH PASSWORD 'geonum'" &&\
 psql -h localhost postgres -c "CREATE DATABASE gitpod;" &&\
 /usr/lib/postgresql/11/bin/pg_ctl stop
 
+# Comme workspace est écrasé à la création du conteneur, on déplace son contenu dans un autre dossier dont on
+# redéplacera le contenu dans /workspace au lancement du conteneur pour permettre la persistance des données
 USER root
 RUN cp -R /workspace /workspace.old && chown -R gitpod:gitpod /workspace.old
