@@ -6,13 +6,19 @@ ENV HOME="/workspace/home"
 ENV PGDATA="$HOME/databases/pgsql_data"
 ENV WINDOW_MANAGER="icewm"
 
+# Changement de la locale en français
+
+RUN apt update && apt upgrade -y && apt install -y locales locales-all
+ENV LC_ALL fr_FR.UTF-8
+ENV LANG fr_FR.UTF-8
+ENV LANGUAGE fr_FR.UTF-8
+
 # Création de l'utilisateur Gitpod
 RUN mkdir /workspace &&\
 useradd -l -u 33333 -G sudo -md $HOME -s /bin/bash -p gitpod gitpod
 
 # Installation des paquets
-RUN apt update && apt upgrade -y &&\
-apt install -y --no-install-recommends curl wget ca-certificates gnupg software-properties-common ruby sudo &&\
+RUN apt install -y --no-install-recommends curl wget ca-certificates gnupg software-properties-common ruby sudo &&\
 curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | apt-key add &&\
 sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/buster pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list' &&\
 wget -qO - https://qgis.org/downloads/qgis-2020.gpg.key | sudo gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/qgis-archive.gpg --import &&\
