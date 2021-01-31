@@ -1,0 +1,13 @@
+{
+    "Servers": {
+        "1": {
+            "Name": "Geonum",
+            "Group": "",
+            "Port": 5432,
+            "Username": "gitpod",
+            "Host": "localhost",
+            "SSLMode": "prefer",
+            "MaintenanceDB": "gitpod"
+        }
+    }
+}
