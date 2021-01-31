@@ -2,6 +2,7 @@ FROM debian:buster
 
 ENV PGADMIN_SETUP_EMAIL="geonum@geonum"
 ENV PGADMIN_SETUP_PASSWORD="geonum"
+ENV PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION=False
 ENV HOME="/workspace/home"
 ENV PGDATA="$HOME/databases/pgsql_data"
 ENV WINDOW_MANAGER="icewm"
