@@ -25,7 +25,7 @@ sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/buster pgad
 wget -qO - https://qgis.org/downloads/qgis-2020.gpg.key | sudo gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/qgis-archive.gpg --import &&\
 chmod a+r /etc/apt/trusted.gpg.d/qgis-archive.gpg &&\
 add-apt-repository "deb https://qgis.org/debian `lsb_release -c -s` main" &&\
-apt update && apt install -yq xvfb x11vnc xterm openjfx libopenjfx-java icewm qgis git postgresql-11-pgrouting osm2pgrouting osm2pgsql pgadmin4-web && \
+apt update && apt install -yq xvfb x11vnc xterm openjfx libopenjfx-java icewm qgis git postgresql-11-pgrouting osm2pgrouting osm2pgsql osmctools pgadmin4-web && \
 sudo rm -rf /var/lib/apt/lists/*
 
 #
