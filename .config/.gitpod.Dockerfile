@@ -66,7 +66,9 @@ su - gitpod -c "/usr/lib/postgresql/11/bin/initdb --locale=fr_FR.utf8 -D $PGDATA
 ruby -i -pe "sub /^#(unix_socket_directories = ).*/, %q(\1'$PGDATA')" "$PGDATA/postgresql.conf"
 
 # Configuration Apache & pgAdmin4
-RUN /usr/pgadmin4/bin/setup-web.sh --yes
+COPY .config/.servers.json /tmp/servers.json
+RUN /usr/pgadmin4/bin/setup-web.sh --yes &&\
+/usr/pgadmin4/venv/bin/python3 /usr/pgadmin4/web/setup.py --load-servers /tmp/servers.json --user geonum@geonum
 RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load \
     && chown -R gitpod:gitpod /etc/apache2 /var/run/apache2 /var/lock/apache2 /var/log/apache2 &&\
     chown -R gitpod:gitpod /var/lib/pgadmin /var/log/pgadmin/

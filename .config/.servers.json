@@ -2,7 +2,7 @@
     "Servers": {
         "1": {
             "Name": "Geonum",
-            "Group": "",
+            "Group": "Servers",
             "Port": 5432,
             "Username": "gitpod",
             "Host": "localhost",
