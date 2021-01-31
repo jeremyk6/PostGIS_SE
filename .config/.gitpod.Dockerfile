@@ -2,7 +2,6 @@ FROM debian:buster
 
 ENV PGADMIN_SETUP_EMAIL="geonum@geonum"
 ENV PGADMIN_SETUP_PASSWORD="geonum"
-ENV PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION=False
 ENV HOME="/workspace/home"
 ENV PGDATA="$HOME/databases/pgsql_data"
 ENV WINDOW_MANAGER="icewm"
@@ -71,7 +70,8 @@ RUN /usr/pgadmin4/bin/setup-web.sh --yes &&\
 /usr/pgadmin4/venv/bin/python3 /usr/pgadmin4/web/setup.py --load-servers /tmp/servers.json --user geonum@geonum
 RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load \
     && chown -R gitpod:gitpod /etc/apache2 /var/run/apache2 /var/lock/apache2 /var/log/apache2 &&\
-    chown -R gitpod:gitpod /var/lib/pgadmin /var/log/pgadmin/
+    chown -R gitpod:gitpod /var/lib/pgadmin /var/log/pgadmin/ &&\
+    sed -i 's/ENHANCED_COOKIE_PROTECTION = True/ENHANCED_COOKIE_PROTECTION = False/g' /usr/pgadmin4/web/config.py 
 COPY --chown=gitpod:gitpod .config/.apache2/ /etc/apache2/
 
 # Configuration de la BDD pour gitpod
