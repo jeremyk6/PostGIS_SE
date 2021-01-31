@@ -61,7 +61,7 @@ sed -i 's/local   all             all                                     peer/l
 
 # Magie pour lancer Postgre en non-root
 RUN sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers &&\
-su - gitpod -c "/usr/lib/postgresql/11/bin/initdb -D $PGDATA" &&\
+su - gitpod -c "/usr/lib/postgresql/11/bin/initdb --locale=fr_FR.utf8 -D $PGDATA" &&\
 ruby -i -pe "sub /^#(unix_socket_directories = ).*/, %q(\1'$PGDATA')" "$PGDATA/postgresql.conf"
 
 # Configuration Apache & pgAdmin4
@@ -74,8 +74,6 @@ COPY --chown=gitpod:gitpod .config/.apache2/ /etc/apache2/
 # Configuration de la BDD pour gitpod
 USER gitpod
 RUN /usr/lib/postgresql/11/bin/pg_ctl start &&\
-sudo pg_dropcluster --stop 11 main &&\
-sudo pg_createcluster --locale=fr_FR.utf8 --start 11 main &&\
 psql -h localhost postgres -c "ALTER USER gitpod WITH SUPERUSER CREATEDB CREATEROLE LOGIN;" &&\
 psql -h localhost postgres -c "ALTER USER gitpod WITH PASSWORD 'geonum'" &&\
 psql -h localhost postgres -c "CREATE DATABASE gitpod;" &&\
